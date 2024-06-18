@@ -38,6 +38,10 @@ void kreiranje_datoteke(const char* ime_datoteke) {
         exit(EXIT_FAILURE); //izlaz iz programa, greska
     }
 
+    // Inicijalizacija nove datoteke sa poèetnim brojem bicikala
+    int br = 0;
+    fwrite(&br, sizeof(int), 1, fp);
+
     printf("Uspjesno kreirana datoteka '%s'.\n", ime_datoteke);
     fclose(fp);
 }

@@ -201,15 +201,14 @@ void dodaj_bicikl(const char* ime_datoteke) {
     admin();
 }
 
-
 void brisanje_bicikla(const char* ime_datoteke) {
-
     if (ime_datoteke == NULL || ime_datoteke[0] == '\0') {
-        printf("Greska: Neispravan naziv datoteke.\n");
-        return NULL;
+        printf("Greška: Neispravan naziv datoteke.\n");
+        return;
     }
 
-    ispis_svih_bicikala("bicikli.bin");
+    int odabir;
+    ispis_svih_bicikala(ime_datoteke);
     printf("\n");
     FILE* fp = fopen(ime_datoteke, "rb");
     if (fp == NULL) {
@@ -227,29 +226,29 @@ void brisanje_bicikla(const char* ime_datoteke) {
         return;
     }
 
-    //ucitavaju se bicikli iz dat
+    //ucitava bicikle iz dat
     fread(bicikli, sizeof(BICIKL), br_bicikala, fp);
     fclose(fp);
 
-    char trazeni_naziv[30];
+    char trazeni_naziv[100];
     printf("Unesite naziv bicikla kojeg zelite obrisati: \n");
     scanf(" %99[^\n]", trazeni_naziv);
 
-    // Pretvaranje unosa u mala slova
+    // Pretvorimo trazeni_naziv u sva mala slova radi usporedbe
     for (int i = 0; trazeni_naziv[i]; i++) {
         trazeni_naziv[i] = tolower(trazeni_naziv[i]);
     }
 
     int indeks = -1;
     for (int i = 0; i < br_bicikala; i++) {
-        // Pretvaranje naziva bicikla iz datoteke u mala slova
+        // Pretvori naziv iz datoteke u mala slova za usporedbu
         char mala_slova[sizeof(bicikli[i].naziv)];
         strcpy(mala_slova, bicikli[i].naziv);
         for (int j = 0; mala_slova[j]; j++) {
             mala_slova[j] = tolower(mala_slova[j]);
         }
-        //usporedjuje
-        if (strcmp(bicikli[i].naziv, trazeni_naziv) == 0) {
+
+        if (strcmp(trazeni_naziv, mala_slova) == 0) {
             indeks = i;
             break;
         }
@@ -266,7 +265,7 @@ void brisanje_bicikla(const char* ime_datoteke) {
         br_bicikala--;
     }
     else {
-        // Ako se bicikl nalazi negdje drugdje, podaci ostalih se premjestaju
+        // Ako se bicikl nalazi negdje drugdje, prepišemo podatke ostalih bicikala u novi niz
         for (int i = indeks; i < br_bicikala - 1; i++) {
             bicikli[i] = bicikli[i + 1];
         }
@@ -312,6 +311,10 @@ void brisanje_datoteke(const char* ime_datoteke) {
             }
             else {
                 printf("Greska prilikom brisanja datoteke '%s'.\n", ime_datoteke);
+                printf("\nPritisnite bilo koju tipku za povratak na pocetak\n");
+                _getch();
+                system("cls");
+                admin();
             }
 
             printf("\nPritisnite bilo koju tipku za kreiranje nove datoteke\n");
@@ -320,6 +323,7 @@ void brisanje_datoteke(const char* ime_datoteke) {
 
             printf("\nPritisnite bilo koju tipku za povratak na pocetak\n");
             _getch();
+            system("cls");
             admin();
         }
         else if (odabir == '2') {
@@ -498,8 +502,6 @@ void uredjivanje(const char* ime_datoteke) {
             // pisanje promjenjenih podataka iz niza strukture bicikli u datoteku 
             fwrite(&bicikli[i], sizeof(BICIKL), 1, fp);
             printf("Promjena uspjesno izvrsena.\n");
-            printf("\nPritisnite bilo koju tipku za povratak na pocetak.\n");
-            _getch();
             break;
         }
     }
@@ -511,6 +513,9 @@ void uredjivanje(const char* ime_datoteke) {
     free(bicikli);
     fclose(fp);
 
+    printf("\nPritisnite bilo koju tipku za povratak na pocetak.\n");
+    _getch();
+    system("cls");
     admin();
 }
 
