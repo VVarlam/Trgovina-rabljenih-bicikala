@@ -13,13 +13,11 @@
 void kreiranje_datoteke(const char* ime_datoteke) {
 
 
-    //provjerava valjanost imena datoteke
     if (PROVJERI_NAZIV(ime_datoteke)) {
         printf("Greska: Neispravan naziv datoteke.\n");
         return;
     }
 
-    //otvara datoteku za citanje
     FILE* fp = fopen(ime_datoteke, "rb");   
 
     if (fp != NULL) {
@@ -35,7 +33,7 @@ void kreiranje_datoteke(const char* ime_datoteke) {
     if (fp == NULL) {
         perror("Otvaranje datoteke");   //poruka o gresci koja se dogodila prilikom otvaranja datoteke
         printf("Neuspjesno stvaranje datoteke '%s'.\n", ime_datoteke);
-        exit(EXIT_FAILURE); //izlaz iz programa, greska
+        exit(EXIT_FAILURE); 
     }
 
     // Inicijalizacija nove datoteke sa pocetnim brojem bicikala
