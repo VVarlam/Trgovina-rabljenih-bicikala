@@ -490,6 +490,31 @@ void kupnja_bicikla(const char* ime_datoteke) {
         trazeni_naziv[i] = tolower(trazeni_naziv[i]);
     }
 
+    int indeks = -1;
+    for (int i = 0; i < br_bicikala; i++) {
+        // Pretvori naziv iz datoteke u mala slova za usporedbu
+        char mala_slova[sizeof(bicikli[i].naziv)];
+        strcpy(mala_slova, bicikli[i].naziv);
+        for (int j = 0; mala_slova[j]; j++) {
+            mala_slova[j] = tolower(mala_slova[j]);
+        }
+
+        if (strcmp(trazeni_naziv, mala_slova) == 0) {
+            indeks = i;
+            break;
+        }
+    }
+
+    if (indeks == -1) {
+        printf("Bicikl nije pronaden.\n");
+        free(bicikli);
+        printf("\nPritisnite bilo koju tipku za povratak u izbornik...\n");
+        _getch();
+        system("cls");
+        prijava_korisnik();
+        return;
+    }
+
     printf("Zelite li nastaviti s kupnjom bicikla ciji ste naziv unjeli?\n");
     printf("1. DA\n");
     printf("2. NE\n");
@@ -497,26 +522,6 @@ void kupnja_bicikla(const char* ime_datoteke) {
     do {
         odabir = _getch();
         if (odabir == '1') {
-            int indeks = -1;
-            for (int i = 0; i < br_bicikala; i++) {
-                // Pretvori naziv iz datoteke u mala slova za usporedbu
-                char mala_slova[sizeof(bicikli[i].naziv)];
-                strcpy(mala_slova, bicikli[i].naziv);
-                for (int j = 0; mala_slova[j]; j++) {
-                    mala_slova[j] = tolower(mala_slova[j]);
-                }
-
-                if (strcmp(trazeni_naziv, mala_slova) == 0) {
-                    indeks = i;
-                    break;
-                }
-            }
-
-            if (indeks == -1) {
-                printf("Bicikl nije pronaden.\n");
-                free(bicikli);
-                return;
-            }
 
             // Ako se bicikl nalazi na zadnjem mjestu, jednostavno smanjimo broj bicikala
             if (indeks == br_bicikala - 1) {

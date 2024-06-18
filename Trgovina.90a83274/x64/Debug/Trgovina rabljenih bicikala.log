@@ -1,4 +1,5 @@
-﻿  funkcije_admin.c
-C:\Users\Pro_PC\source\repos\Trgovina rabljenih bicikala\funkcije_admin.c(239,28): warning C4013: 'tolower' undefined; assuming extern returning int
-C:\Users\Pro_PC\source\repos\Trgovina rabljenih bicikala\funkcije_admin.c(210,9): warning C4101: 'odabir': unreferenced local variable
+﻿  funkcije_korisnik.c
+C:\Users\Pro_PC\source\repos\Trgovina rabljenih bicikala\funkcije_korisnik.c(207,20): warning C4098: 'pretrazivanje': 'void' function returning a value
+C:\Users\Pro_PC\source\repos\Trgovina rabljenih bicikala\funkcije_korisnik.c(281,37): warning C4013: 'tolower' undefined; assuming extern returning int
+C:\Users\Pro_PC\source\repos\Trgovina rabljenih bicikala\funkcije_korisnik.c(458,20): warning C4098: 'kupnja_bicikla': 'void' function returning a value
   Trgovina rabljenih bicikala.vcxproj -> C:\Users\Pro_PC\source\repos\Trgovina rabljenih bicikala\x64\Debug\Trgovina rabljenih bicikala.exe

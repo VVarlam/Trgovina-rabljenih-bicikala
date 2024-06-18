@@ -257,6 +257,12 @@ void brisanje_bicikla(const char* ime_datoteke) {
     if (indeks == -1) {
         printf("Bicikl nije pronaden.\n");
         free(bicikli);
+
+        printf("\nPritisnite bilo koju tipku za povratak u izbornik...\n");
+        _getch();
+        system("cls");
+        admin();
+
         return;
     }
 

@@ -38,7 +38,7 @@ void kreiranje_datoteke(const char* ime_datoteke) {
         exit(EXIT_FAILURE); //izlaz iz programa, greska
     }
 
-    // Inicijalizacija nove datoteke sa poèetnim brojem bicikala
+    // Inicijalizacija nove datoteke sa pocetnim brojem bicikala
     int br = 0;
     fwrite(&br, sizeof(int), 1, fp);
 
@@ -180,7 +180,7 @@ Izbornik odabir_korisnika() {
     printf("\t3. Izlazak iz programa\n");
     printf("\n\nOdaberite opciju: ");
 
-    int ch = _getch();  // Èitamo jedan karakter bez potrebe za Enter tasterom
+    int ch = _getch();  // citamo jedan karakter bez potrebe za Enter tasterom
     snprintf(unos, sizeof(unos), "%c", ch);  // Pretvaramo karakter u string
 
     system("cls");
