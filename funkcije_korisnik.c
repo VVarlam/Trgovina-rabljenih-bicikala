@@ -5,6 +5,7 @@
 #include "Header.h"
 #include <conio.h>
 
+//24
 
 //funkcija spaja dva vec sortirana podniza
 void podnizovi(BICIKL* bicikli, int l, int s, int d) {
@@ -16,10 +17,12 @@ void podnizovi(BICIKL* bicikli, int l, int s, int d) {
 	BICIKL* lijevo = (BICIKL*)malloc(n1 * sizeof(BICIKL));
 	if (lijevo == NULL) {
 		printf("Greska pri alokaciji memorije\n");
+        exit(EXIT_FAILURE);
 	}
 	BICIKL* desno = (BICIKL*)malloc(n2 * sizeof(BICIKL));
 	if (desno == NULL) {
 		printf("Greska pri alokaciji memorije\n");
+        exit(EXIT_FAILURE);
 	}
 
 	//zapisuje bicikle u lijevi/desni podniz
@@ -245,7 +248,7 @@ void pretrazivanje(const char* ime_datoteke) {
             case VRSTA:
                 printf("Odaberite vrstu bicikla: \n");
                 printf("1. E bicikl\n2. Bicikl\n");
-                strcpy(temp.vrsta, odabir_vrste);
+                strcpy(temp.vrsta, odabir_vrste());
                 for (int i = 0; i < br_bicikala; i++) {
                     if (strcmp(temp.vrsta, bicikli[i].vrsta) == 0) {
                         printf("Vrsta: %s\nNaziv: %s\nKategorija: %s\nBrand: %s\nCijena: %.2f\nStanje: %s\n\n",
@@ -263,6 +266,7 @@ void pretrazivanje(const char* ime_datoteke) {
                 }
                 printf("\nPritisnite bilo koju tipku za povratak...\n");
                 _getch();
+                system("cls");
                 prijava_korisnik();
                 break;
             case NAZIV:
@@ -302,6 +306,7 @@ void pretrazivanje(const char* ime_datoteke) {
                 }
                 printf("\nPritisnite bilo koju tipku za povratak...\n");
                 _getch();
+                system("cls");
                 prijava_korisnik();
                 break;
             case KATEGORIJA:
@@ -313,7 +318,7 @@ void pretrazivanje(const char* ime_datoteke) {
                 printf("5. Downhill\n");
                 printf("6. Triatlon\n");
                 printf("7. Gradski\n");
-                strcpy(temp.kategorija, odabir_kategorije);
+                strcpy(temp.kategorija, odabir_kategorije());
                 for (int i = 0; i < br_bicikala; i++) {
                     if (strcmp(temp.kategorija, bicikli[i].kategorija) == 0) {
 
@@ -332,6 +337,7 @@ void pretrazivanje(const char* ime_datoteke) {
                 }
                 printf("\nPritisnite bilo koju tipku za povratak...\n");
                 _getch();
+                system("cls");
                 prijava_korisnik();
                 break;
             case BRAND:
@@ -342,7 +348,7 @@ void pretrazivanje(const char* ime_datoteke) {
                 printf("4. Giant\n");
                 printf("5. Liv\n");
                 printf("6. MBM\n");
-                strcpy(temp.brand, odabir_branda);
+                strcpy(temp.brand, odabir_branda());
                 for (int i = 0; i < br_bicikala; i++) {
                     if (strcmp(temp.brand, bicikli[i].brand) == 0) {
 
@@ -361,6 +367,7 @@ void pretrazivanje(const char* ime_datoteke) {
                 }
                 printf("\nPritisnite bilo koju tipku za povratak...\n");
                 _getch();
+                system("cls");
                 prijava_korisnik();
                 break;
             case CIJENA:
@@ -393,13 +400,14 @@ void pretrazivanje(const char* ime_datoteke) {
                 }
                 printf("\nPritisnite bilo koju tipku za povratak...\n");
                 _getch();
+                system("cls");
                 prijava_korisnik();
                 break;
             case STANJE:
                 printf("Odaberite stanje bicikla: \n");
                 printf("1. Novo\n");
                 printf("2. Rabljeno\n");
-                strcpy(temp.stanje, odabir_stanja);
+                strcpy(temp.stanje, odabir_stanja());
                 for (int i = 0; i < br_bicikala; i++) {
                     if (strcmp(temp.stanje, bicikli[i].stanje) == 0) {
 
@@ -418,6 +426,7 @@ void pretrazivanje(const char* ime_datoteke) {
                 }
                 printf("\nPritisnite bilo koju tipku za povratak...\n");
                 _getch();
+                system("cls");
                 prijava_korisnik();
                 break;
             case POVRATAK:

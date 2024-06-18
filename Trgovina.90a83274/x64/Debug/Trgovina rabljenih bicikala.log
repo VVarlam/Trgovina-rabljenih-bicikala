@@ -1,0 +1,4 @@
+﻿  funkcije_admin.c
+C:\Users\Pro_PC\source\repos\Trgovina rabljenih bicikala\funkcije_admin.c(209,20): warning C4098: 'brisanje_bicikla': 'void' function returning a value
+C:\Users\Pro_PC\source\repos\Trgovina rabljenih bicikala\funkcije_admin.c(240,28): warning C4013: 'tolower' undefined; assuming extern returning int
+  Trgovina rabljenih bicikala.vcxproj -> C:\Users\Pro_PC\source\repos\Trgovina rabljenih bicikala\x64\Debug\Trgovina rabljenih bicikala.exe

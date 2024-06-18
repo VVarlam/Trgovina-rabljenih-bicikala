@@ -342,6 +342,8 @@ void uredjivanje(const char* ime_datoteke) {
         return;
     }
 
+    ispis_svih_bicikala();
+
     Uredjivanje odabir;
     int f = 0;
     BICIKL* bicikli = NULL;
@@ -365,7 +367,7 @@ void uredjivanje(const char* ime_datoteke) {
 
     fread(bicikli, sizeof(BICIKL), br_bicikala, fp);
 
-    printf("Unesite naziv bicikla kojeg zelite promijeniti:\n");
+    printf("\nUnesite naziv bicikla kojeg zelite promijeniti:\n");
     scanf(" %29[^\n]", temp.naziv);
 
     // Pretvorimo temp.naziv u sva mala slova radi usporedbe
@@ -512,25 +514,3 @@ void uredjivanje(const char* ime_datoteke) {
     admin();
 }
 
-void preimenuj_datoteku(const char* stari_naziv) {
-    char novi_naziv[100];
-    char unos[100];
-
-    printf("Unesite stari naziv datoteke: ");
-    scanf("%s", unos);
-
-    if (strcmp(unos, stari_naziv) != 0) {
-        printf("Uneseni stari naziv datoteke nije ispravan.\n");
-        return;
-    }
-
-    printf("Unesite novo ime datoteke: ");
-    scanf("%s", novi_naziv);
-
-    if (rename(stari_naziv, novi_naziv) == 0) {
-        printf("Datoteka '%s' uspješno preimenovana u '%s'.\n", stari_naziv, novi_naziv);
-    }
-    else {
-        printf("Greška prilikom preimenovanja datoteke.\n");
-    }
-}

@@ -15,6 +15,5 @@ int main() {
 
 	izbornik();
 
-
 	return 0;
 }

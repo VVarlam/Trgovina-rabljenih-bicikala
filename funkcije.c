@@ -5,11 +5,16 @@
 #include "Header.h"
 #include <conio.h>
 
+//Provjerava je li naziv datoteke NULL ili prazan string
+#define PROVJERI_NAZIV(ime_datoteke) ((ime_datoteke) == NULL || (ime_datoteke)[0] == '\0')
+
+//5, 8
+
 void kreiranje_datoteke(const char* ime_datoteke) {
 
 
     //provjerava valjanost imena datoteke
-    if (ime_datoteke == NULL || ime_datoteke[0] == '\0') {
+    if (PROVJERI_NAZIV(ime_datoteke)) {
         printf("Greska: Neispravan naziv datoteke.\n");
         return;
     }
@@ -39,7 +44,7 @@ void kreiranje_datoteke(const char* ime_datoteke) {
 
 int broj_bicikala(char* ime_datoteke) {
 
-    if (ime_datoteke == NULL || ime_datoteke[0] == '\0') {
+    if (PROVJERI_NAZIV(ime_datoteke)) {
         printf("Greska: Neispravan naziv datoteke.\n");
         return NULL;
     }
@@ -63,7 +68,7 @@ int broj_bicikala(char* ime_datoteke) {
 
 BICIKL* ucitavanje_bicikala(char* ime_datoteke) {   //vraca pokazivac na BICIKL
 
-    if (ime_datoteke == NULL || ime_datoteke[0] == '\0') {
+    if (PROVJERI_NAZIV(ime_datoteke)) {
         printf("Greska: Neispravan naziv datoteke.\n");
         return NULL;
     }
@@ -138,7 +143,7 @@ int ispis_svih_bicikala() {
     }
 }
 
-
+//inline funkcija se moze direktno umetnuti na mjesto poziva
 void izlazak() {
     int odabir;
 
@@ -160,25 +165,6 @@ void izlazak() {
         }
     } while (odabir != '1' && odabir != '2');
 }
-
-/* 
-int odabir_korisnika() {
-    int odabir;
-
-    printf("Dobrodosli u trgovinu rabljenih automobila\n");
-    printf("\t1. Korisnicki pristup\n");
-    printf("\t2. Administratorski pristup\n");
-    printf("\t3.Izlazak iz programa\n");
-    printf("\n\nOdaberite opciju \n");
-
-    odabir = _getch() - '0';
-    //korisnikov unos interpretira se kao broj a ne kao ASCII
-
-    system("cls");
-    return odabir;
-}
-*/
-
 
 
 Izbornik odabir_korisnika() {

@@ -156,32 +156,6 @@ int admin() {
     return 0;
 }
 
-/* 
-void izbornik() {
-    system("cls");
-    static int odabir;    
-    odabir = odabir_korisnika();
-
-    switch (odabir) {
-    case 1:
-        prijava_korisnik();
-        _getch();
-        break;
-    case 2:
-        prijava_admin();
-        _getch();
-        break;
-    case 3:
-        izlazak();
-        _getch();
-        break;
-    default:
-        printf("Neispravan odabir\n");
-        _getch();
-        break;
-    }
-}
-*/
 void izbornik() {
     while (1) {
         system("cls");
